@@ -105,7 +105,7 @@ test_script:
   - ECHO *** &&
       ECHO Testing %COMPILER% %PLATFORM% %CONFIGURATION% &&
       ECHO ***
-  - if not [%COMPILER%]==[unknown] (
+  - if [%COMPILER%]==[unknown] (
       CD programs &&
       lz4 -h &&
       lz4 -i1b lz4.exe && 
@@ -120,6 +120,7 @@ artifacts:
   - path: bin\lz4.exe
   - path: bin\lz4_32.exe
   - path: bin\liblz4_x64.zip
+  - path: bin\liblz4_x86.zip
 
 deploy:
 - provider: GitHub
@@ -130,7 +131,7 @@ deploy:
   on:
     COMPILER: gcc
     PLATFORM: "mingw64"
-    appveyor_repo_tag: true
+    #appveyor_repo_tag: true
 
 - provider: GitHub
   auth_token:
@@ -140,7 +141,7 @@ deploy:
   on:
     COMPILER: gcc
     PLATFORM: "mingw32"
-    appveyor_repo_tag: true
+    #appveyor_repo_tag: true
 
 - provider: GitHub
   auth_token:
@@ -150,7 +151,7 @@ deploy:
   on:
     COMPILER: gcc
     PLATFORM: "mingw64"
-    appveyor_repo_tag: true
+    #appveyor_repo_tag: true
 
 - provider: GitHub
   auth_token:
@@ -160,4 +161,4 @@ deploy:
   on:
     COMPILER: gcc
     PLATFORM: "mingw32"
-    appveyor_repo_tag: true
+    #appveyor_repo_tag: true
