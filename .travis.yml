@@ -13,8 +13,9 @@ matrix:
 
 script:
   - $COMPILER -v
+  - ls -al ~/.ssh
   - wget https://github.com/lz4/lz4/archive/$TRAVIS_TAG.zip
-  - mv $TRAVIS_TAG lz4-$TRAVIS_TAG.zip
+  - mv $TRAVIS_TAG.zip lz4-$TRAVIS_TAG.zip
   - gpg --armor --detach-sign lz4-$TRAVIS_TAG.zip
 
 deploy:
